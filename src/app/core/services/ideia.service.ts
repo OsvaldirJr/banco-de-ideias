@@ -16,8 +16,8 @@ export class IdeiaService {
     return this._httpClient.post<IdeiaInterface>(`${environment.apiUrl}/ideias`, ideia)
   }
 
-  getIdeias(): Observable<BaseInterface>{
-    return this._httpClient.get<BaseInterface>(`${environment.apiUrl}/ideias`)
+  getIdeias(): Observable<BaseInterface<IdeiaInterface>>{
+    return this._httpClient.get<BaseInterface<IdeiaInterface>>(`${environment.apiUrl}/ideias`)
   }
 
   getIdeiaById(id: string): Observable<IdeiaInterface>{
