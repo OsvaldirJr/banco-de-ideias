@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CardComponent } from '../../shared/card/card.component';
 import { IdeiaInterface } from '../../shared/interfaces/ideia.interface';
@@ -6,7 +6,6 @@ import { IdeiaService } from '../../core/services/ideia.service';
 import { BaseInterface } from '../../shared/interfaces/base.interface';
 import { httpResource } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-cadastro',
