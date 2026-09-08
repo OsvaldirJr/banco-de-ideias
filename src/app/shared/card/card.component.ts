@@ -1,4 +1,4 @@
-import { Component, inject, input} from '@angular/core';
+import { Component, inject, input, ChangeDetectionStrategy } from '@angular/core';
 import { IdeiaInterface } from '../interfaces/ideia.interface';
 import { Router } from "@angular/router";
 
@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
   selector: 'app-banco-de-ideias-card',
   standalone: true,
   templateUrl: './card.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card.component.scss'
 })
 export class CardComponent {

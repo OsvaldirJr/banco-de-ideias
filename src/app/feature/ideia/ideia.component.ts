@@ -1,14 +1,14 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IdeiaService } from '../../core/services/ideia.service';
 import { BehaviorSubject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-ideia',
-  standalone: true,
-  imports: [],
-  templateUrl: './ideia.component.html',
-  styleUrl: './ideia.component.scss'
+    selector: 'app-ideia',
+    imports: [],
+    templateUrl: './ideia.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './ideia.component.scss'
 })
 export class IdeiaComponent implements OnInit, OnDestroy{
   actvatedRoute = inject(ActivatedRoute);
