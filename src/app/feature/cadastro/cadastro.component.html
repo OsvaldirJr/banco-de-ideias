@@ -18,15 +18,18 @@
         <span class='erro'>O texto é obrigatório</span>
       }
     </div>
+    
 
     <button type="submit" [disabled]='cadastroForm.invalid'>
       Enviar
     </button>
   </form>
+  <input (input) = "pesquisa($event)"/>
 
+  A quantidade de Cards é {{counter()}}
   <div class="cards">
     <!--CODEREVIEW - aplicar o @defer -->
-    @for(unicaIdeia of listaDeIdeias.value()?.dados; track $index){
+    @for(unicaIdeia of filteredIdeias(); track $index){
       <app-banco-de-ideias-card [ideia]="unicaIdeia"/>
     }
     @empty {
