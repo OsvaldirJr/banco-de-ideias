@@ -1,0 +1,36 @@
+<section class="pagina">
+  <h1 class="titulo">{{titulo}}</h1>
+   <!--CODEREVIEW - FORMULÁRIO REATIVO -->
+  <form class="formulario" #cadastroForm='ngForm' (ngSubmit)='enviar(cadastroForm)'>
+    <div class="campo">
+      <label for="ideia">Ideia</label>
+      <input id="ideia" name='ideia' [value]="titulo" ngModel required #ideia='ngModel'>
+      @if (ideia.invalid && ideia.touched) {
+        <span class='erro'>O texto é obrigatório</span>
+      }
+      
+    </div>
+
+    <div class="campo">
+      <label for="resolve">O que resolve?</label>
+      <input id="resolve" name='resolve' ngModel required #resolve='ngModel'>
+      @if (resolve.invalid && resolve.touched) {
+        <span class='erro'>O texto é obrigatório</span>
+      }
+    </div>
+
+    <button type="submit" [disabled]='cadastroForm.invalid'>
+      Enviar
+    </button>
+  </form>
+
+  <div class="cards">
+    <!--CODEREVIEW - aplicar o @defer -->
+    @for(unicaIdeia of listaDeIdeias; track $index){
+      <app-banco-de-ideias-card [ideia]="unicaIdeia"/>
+    }
+    @empty {
+      <p class="vazio">Nenhuma ideia cadastrada ainda.</p>
+    }
+  </div>
+</section>
