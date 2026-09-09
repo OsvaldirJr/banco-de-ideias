@@ -23,6 +23,9 @@ export class IdeiaService {
   getIdeiaById(id: string): Observable<IdeiaInterface>{
     return this._httpClient.get<IdeiaInterface>(`${environment.apiUrl}/ideias/${id}`)
   }
+  getIdeiaByName(name: string): Observable<IdeiaInterface>{
+    return this._httpClient.get<IdeiaInterface>(`${environment.apiUrl}/ideias/${name}`)
+  }
 
   saveListaIdeiasDb(listaDeIdeias: IdeiaInterface[]): void{
     const listaDeIdeiasString = JSON.stringify(listaDeIdeias);

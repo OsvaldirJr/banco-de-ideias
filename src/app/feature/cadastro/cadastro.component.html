@@ -24,9 +24,10 @@
       Enviar
     </button>
   </form>
-  <input (input) = "pesquisa($event)"/>
+  <input [formControl]="pesquisarControl"/>
 
   A quantidade de Cards é {{counter()}}
+  {{firstIdeia | async}}
   <div class="cards">
     <!--CODEREVIEW - aplicar o @defer -->
     @for(unicaIdeia of filteredIdeias(); track $index){
