@@ -3,3 +3,8 @@ export interface IdeiaInterface{
   ideia: string;
   resolve: string;
 }
+
+export interface IdeiaInterfaceGroup{
+  ideia: any[];
+  resolve: any[];
+}

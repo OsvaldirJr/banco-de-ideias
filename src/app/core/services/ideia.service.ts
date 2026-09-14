@@ -20,7 +20,7 @@ export class IdeiaService {
     return this._httpClient.get<BaseInterface<IdeiaInterface>>(`${environment.apiUrl}/ideias`)
   }
 
-  getIdeiaById(id: string): Observable<IdeiaInterface>{
+  getIdeiaById(id: number): Observable<IdeiaInterface>{
     return this._httpClient.get<IdeiaInterface>(`${environment.apiUrl}/ideias/${id}`)
   }
   getIdeiaByName(name: string): Observable<IdeiaInterface>{

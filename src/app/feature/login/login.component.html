@@ -1,0 +1,24 @@
+<section class="pagina">
+    <form class="formulario" [formGroup]="loginForm">
+        <div class="campo">
+            <label for="user">Usuário</label>
+            <input id="user" name='user' formControlName="email">
+            @if (userValue?.invalid && userValue.touched) {
+            <span class='erro'>O texto é obrigatório</span>
+            }
+
+        </div>
+
+        <div class="campo">
+            <label for="pass">Senha</label>
+            <input id="pass" name='pass' formControlName="senha" type="password">
+            @if (passValue?.invalid && passValue.touched) {
+            <span class='erro'>O texto é obrigatório</span>
+            }
+        </div>
+
+        <button (click)="login()" [disabled]='loginForm.invalid'>
+            Enviar
+        </button>
+    </form>
+</section>

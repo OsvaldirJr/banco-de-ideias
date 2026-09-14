@@ -1,11 +1,11 @@
 <section class="pagina">
   <h1 class="titulo">{{titulo}}</h1>
    <!--CODEREVIEW - FORMULÁRIO REATIVO -->
-  <form class="formulario" #cadastroForm='ngForm' (ngSubmit)='enviar(cadastroForm)'>
+  <form class="formulario" [formGroup]="ideiaFormGroup">
     <div class="campo">
       <label for="ideia">Ideia</label>
-      <input id="ideia" name='ideia' [value]="titulo" ngModel required #ideia='ngModel'>
-      @if (ideia.invalid && ideia.touched) {
+      <input id="ideia" name='ideia' formControlName="ideia" >
+      @if (ideiaValue?.invalid && ideiaValue.touched) {
         <span class='erro'>O texto é obrigatório</span>
       }
       
@@ -13,21 +13,21 @@
 
     <div class="campo">
       <label for="resolve">O que resolve?</label>
-      <input id="resolve" name='resolve' ngModel required #resolve='ngModel'>
-      @if (resolve.invalid && resolve.touched) {
+      <input id="resolve" name='resolve' formControlName="resolve">
+      @if (resolveValue?.invalid && resolveValue.touched) {
         <span class='erro'>O texto é obrigatório</span>
       }
     </div>
     
 
-    <button type="submit" [disabled]='cadastroForm.invalid'>
+    <button (click)="enviar()" [disabled]='ideiaFormGroup.invalid'>
       Enviar
     </button>
   </form>
   <input [formControl]="pesquisarControl"/>
 
   A quantidade de Cards é {{counter()}}
-  {{firstIdeia | async}}
+  {{ (firstIdeia | async)?.ideia }}
   <div class="cards">
     <!--CODEREVIEW - aplicar o @defer -->
     @for(unicaIdeia of filteredIdeias(); track $index){
