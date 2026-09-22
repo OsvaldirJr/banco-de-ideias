@@ -27,3 +27,40 @@ h3 {
   letter-spacing: -0.02em;
   color: #2c2c3a;
 }
+
+.pagina {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.formulario {
+  display: grid;
+  gap: 16px;
+  max-width: 480px;
+  margin: 0 auto 40px;
+  padding: 28px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(80, 70, 140, 0.08);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d8d5e8;
+  border-radius: 10px;
+  font: inherit;
+  color: #2c2c3a;
+  background: #faf9fd;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #6c5ce7;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+}

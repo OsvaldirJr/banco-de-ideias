@@ -1,2 +1,71 @@
-<!--CODEREVIEW - adicionar logica ta tela-->
-<p>ideia works!</p>
+<section class="pagina">
+
+  <header class="topo">
+    <a class="voltar" routerLink="/">&larr; Voltar</a>
+
+    @if (souAutor()) {
+      <div class="acoes">
+        <button type="button" class="editar" (click)="modalEditar.abrir()">Editar</button>
+        <button type="button" class="excluir" (click)="modalExcluir.abrir()">Excluir</button>
+      </div>
+    }
+  </header>
+
+  @if (ideiaResource.isLoading()) {
+    <p>Carregando ideia...</p>
+  } @else if (erro()) {
+    <p class="erro">Não foi possível carregar a ideia: {{ erro() }}</p>
+  } @else if (ideia(); as dados) {
+    <h1 class="titulo">{{ dados.ideia }}</h1>
+
+    <div class="itens">
+      @for (item of itens(); track item.rotulo) {
+        <article class="item">
+          <h2 class="item-rotulo">{{ item.rotulo }}</h2>
+          <p class="item-valor">{{ item.valor }}</p>
+        </article>
+      }
+    </div>
+
+    <footer class="votacao">
+      <div class="votacao-total">
+        <strong class="votacao-numero">{{ votos() }}</strong>
+        <span class="votacao-rotulo">{{ votos() === 1 ? 'voto' : 'votos' }}</span>
+      </div>
+
+      @if (podeVotar()) {
+        <button
+          type="button"
+          class="votar"
+          [class.votado]="votei()"
+          [disabled]="votando()"
+          (click)="votar()">
+          {{ votei() ? 'Desfazer' : 'Votar' }}
+        </button>
+      } @else if (souAutor()) {
+        <p class="votacao-aviso">Você não pode votar na sua própria ideia.</p>
+      } @else {
+        <p class="votacao-aviso">Entre na sua conta para votar.</p>
+      }
+
+      @if (erroVoto()) {
+        <p class="erro">{{ erroVoto() }}</p>
+      }
+    </footer>
+  } @else {
+    <p class="vazio">Nenhuma ideia selecionada.</p>
+  }
+
+  <app-modal #modalEditar titulo="Editar ideia">
+    <app-cadastro [ideia]="ideia()" (salvo)="aoSalvar(modalEditar)" />
+  </app-modal>
+
+  <app-modal #modalExcluir titulo="Excluir ideia">
+    <p class="confirmacao">Você tem certeza?</p>
+    <div class="confirmacao-acoes">
+      <button type="button" class="cancelar" (click)="modalExcluir.fechar()">Cancelar</button>
+      <button type="button" class="excluir" (click)="excluir(modalExcluir)">Excluir</button>
+    </div>
+  </app-modal>
+
+</section>

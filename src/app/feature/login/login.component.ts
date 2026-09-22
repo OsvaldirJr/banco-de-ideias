@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../core/services/login.service';
-import { Router } from '@angular/router';
+import { SessaoService } from '../../core/services/sessao.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   selector: 'app-login',
   styleUrl: './login.component.scss',
   templateUrl: './login.component.html',
@@ -13,6 +14,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
   private ls = inject(LoginService);
   private router = inject(Router)
+  private sessao = inject(SessaoService)
   public loginForm = this.fb.group({
     email: ['', Validators.required],
     senha: ['', Validators.required]
@@ -25,8 +27,8 @@ export class LoginComponent {
     let dados = this.loginForm.getRawValue();
     this.ls.login(dados).subscribe({
       next:(value: any)=>{
-        localStorage.setItem('user_token', value.token);
-        this.router.navigate(['/'])
+        this.sessao.entrar(value.token);
+        this.router.navigate(['/']);
       }
     })
   }

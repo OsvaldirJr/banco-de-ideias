@@ -1,0 +1,48 @@
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c2c3a;
+}
+
+.nova-ideia {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: #6c5ce7;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 18px;
+}
+
+.nova-ideia:hover {
+  background: #5b4bc4;
+}
+
+.erro {
+  color: #c0392b;
+}
+
+.counter{
+    display: block;
+    margin-top: 18px;
+}
+
+.voltar {
+  font-weight: 600;
+  color: #5b4bc4;
+  text-decoration: none;
+  cursor: pointer;
+}

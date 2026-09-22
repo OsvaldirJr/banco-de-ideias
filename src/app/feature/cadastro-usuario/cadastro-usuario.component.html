@@ -1,0 +1,39 @@
+<section class="pagina">
+  <h1 class="titulo">Criar conta</h1>
+
+  <form class="formulario" [formGroup]="cadastroForm">
+    <div class="campo">
+      <label for="nome">Nome</label>
+      <input id="nome" name="nome" formControlName="nome">
+      @if (nomeValue?.invalid && nomeValue.touched) {
+        <span class="erro">Informe seu nome (ao menos 2 caracteres)</span>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email" formControlName="email">
+      @if (emailValue?.invalid && emailValue.touched) {
+        <span class="erro">Informe um e-mail válido</span>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" formControlName="senha">
+      @if (senhaValue?.invalid && senhaValue.touched) {
+        <span class="erro">A senha precisa ter ao menos 8 caracteres</span>
+      }
+    </div>
+
+    @if (erro()) {
+      <p class="erro-api">{{ erro() }}</p>
+    }
+
+    <button (click)="cadastrar()" [disabled]="cadastroForm.invalid || enviando()">
+      {{ enviando() ? 'Enviando...' : 'Cadastrar' }}
+    </button>
+
+    <p class="alternativa">Já tem conta? <a routerLink="/login">Entre aqui</a></p>
+  </form>
+</section>

@@ -1,0 +1,29 @@
+<form class="filtro" [formGroup]="filtroForm">
+  <div class="campo texto">
+    <label for="filtro-texto">Buscar</label>
+    <input id="filtro-texto" type="search" formControlName="texto"
+           placeholder="titulo, problema ou categoria">
+  </div>
+
+  <div class="campo">
+    <label for="filtro-categoria">Categoria</label>
+    <select id="filtro-categoria" formControlName="categoria">
+      <option value="">Todas</option>
+      @for (categoria of categorias(); track categoria) {
+        <option [value]="categoria">{{categoria}}</option>
+      }
+    </select>
+  </div>
+
+  <div class="campo">
+    <label for="filtro-data-inicio">Criada de</label>
+    <input id="filtro-data-inicio" type="date" formControlName="dataInicio">
+  </div>
+
+  <div class="campo">
+    <label for="filtro-data-fim">Criada ate</label>
+    <input id="filtro-data-fim" type="date" formControlName="dataFim">
+  </div>
+
+  <button type="button" class="limpar" (click)="limpar()">Limpar</button>
+</form>

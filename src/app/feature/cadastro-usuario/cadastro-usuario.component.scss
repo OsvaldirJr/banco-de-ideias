@@ -1,10 +1,9 @@
-.formulario {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
+.titulo {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c2c3a;
 }
 
 .campo {
@@ -21,6 +20,15 @@ label {
 .erro {
   font-size: 0.82rem;
   color: #c0392b;
+}
+
+.erro-api {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #c0392b;
+  background: #fdecea;
 }
 
 button {
@@ -45,4 +53,21 @@ button:hover:not(:disabled) {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.alternativa {
+  margin: 0;
+  text-align: center;
+  font-size: 0.92rem;
+  color: #6b6b7c;
+}
+
+.alternativa a {
+  font-weight: 600;
+  color: #5b4bc4;
+  text-decoration: none;
+}
+
+.alternativa a:hover {
+  text-decoration: underline;
 }

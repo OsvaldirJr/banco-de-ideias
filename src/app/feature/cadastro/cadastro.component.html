@@ -1,40 +1,34 @@
-<section class="pagina">
-  <h1 class="titulo">{{titulo}}</h1>
-   <!--CODEREVIEW - FORMULÁRIO REATIVO -->
-  <form class="formulario" [formGroup]="ideiaFormGroup">
-    <div class="campo">
-      <label for="ideia">Ideia</label>
-      <input id="ideia" name='ideia' formControlName="ideia" >
-      @if (ideiaValue?.invalid && ideiaValue.touched) {
-        <span class='erro'>O texto é obrigatório</span>
-      }
-      
-    </div>
-
-    <div class="campo">
-      <label for="resolve">O que resolve?</label>
-      <input id="resolve" name='resolve' formControlName="resolve">
-      @if (resolveValue?.invalid && resolveValue.touched) {
-        <span class='erro'>O texto é obrigatório</span>
-      }
-    </div>
-    
-
-    <button (click)="enviar()" [disabled]='ideiaFormGroup.invalid'>
-      Enviar
-    </button>
-  </form>
-  <input [formControl]="pesquisarControl"/>
-
-  A quantidade de Cards é {{counter()}}
-  {{ (firstIdeia | async)?.ideia }}
-  <div class="cards">
-    <!--CODEREVIEW - aplicar o @defer -->
-    @for(unicaIdeia of filteredIdeias(); track $index){
-      <app-banco-de-ideias-card [ideia]="unicaIdeia"/>
-    }
-    @empty {
-      <p class="vazio">Nenhuma ideia cadastrada ainda.</p>
+<form class="formulario" [formGroup]="ideiaFormGroup">
+  <div class="campo">
+    <label for="ideia">Titulo</label>
+    <input id="ideia" name='ideia' formControlName="ideia" >
+    @if (ideiaValue?.invalid && ideiaValue.touched) {
+      <span class='erro'>O texto é obrigatório</span>
     }
   </div>
-</section>
+
+  <div class="campo">
+    <label for="categoria">Categoria</label>
+    <select id="categoria" name='categoria' formControlName="categoria">
+      <option value="">Selecione...</option>
+      <option value="Tecnologia">Tecnologia</option>
+      <option value="Negocio">Negocio</option>
+      <option value="Outro">Outro</option>
+    </select>
+    @if (categoriaValue?.invalid && categoriaValue.touched) {
+      <span class='erro'>Escolha uma categoria</span>
+    }
+  </div>
+
+  <div class="campo">
+    <label for="resolve">Qual problema isso resolve?</label>
+    <input id="resolve" name='resolve' formControlName="resolve">
+    @if (resolveValue?.invalid && resolveValue.touched) {
+      <span class='erro'>O texto é obrigatório</span>
+    }
+  </div>
+
+  <button (click)="enviar()" [disabled]='ideiaFormGroup.invalid'>
+    {{ ideia() ? 'Salvar' : 'Enviar' }}
+  </button>
+</form>

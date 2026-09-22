@@ -1,9 +1,10 @@
 import { Component, inject, input, ChangeDetectionStrategy } from '@angular/core';
 import { IdeiaInterface } from '../interfaces/ideia.interface';
-import { Router } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-banco-de-ideias-card',
+  imports:[RouterModule],
   standalone: true,
   templateUrl: './card.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -11,9 +12,4 @@ import { Router } from "@angular/router";
 })
 export class CardComponent {
   public ideia = input.required<IdeiaInterface>();
-  private _router = inject(Router);
-
-  public navigate(): void{
-    this._router.navigate(['/ideia', this.ideia().id]);
-  }
 }

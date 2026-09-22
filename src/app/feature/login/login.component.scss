@@ -57,6 +57,23 @@ input:focus {
   color: #c0392b;
 }
 
+.alternativa {
+  margin: 0;
+  text-align: center;
+  font-size: 0.92rem;
+  color: #6b6b7c;
+}
+
+.alternativa a {
+  font-weight: 600;
+  color: #5b4bc4;
+  text-decoration: none;
+}
+
+.alternativa a:hover {
+  text-decoration: underline;
+}
+
 button {
   justify-self: center;
   min-width: 140px;

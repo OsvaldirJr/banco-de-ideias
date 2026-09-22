@@ -1,27 +1,34 @@
 import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
+import { inject } from "@angular/core";
+import { Router } from "@angular/router";
 import { catchError, throwError } from "rxjs";
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) =>{
-    let errorMessage = ''
+    const router = inject(Router);
+    
     return next(req).pipe(
         catchError((error: HttpErrorResponse)=>{
+            const detalhe = error.error?.erro ?? error.message;
+            let errorMessage = '';
+
             switch(error.status){
                 case 401:
-                    //redirect to login
-                    console.log(`Unauthorazed error: ${error.error.erro}`)
+                    router.navigate(['/login']);
+                    errorMessage = `Unauthorized error: ${detalhe}`;
                     break;
                 case 404:
-                    console.log(`Not found error: ${error.error.erro}`)
+                    errorMessage = `Not found error: ${detalhe}`;
                     break;
                 case 500:
-                    console.log(`Internal server Error: ${error.error.erro}`)
+                    errorMessage = `Internal server Error: ${detalhe}`;
                     break;
                 default:
-                    console.log(`other error Status ${error.status}, Error: ${error.error.erro}`)
-                
-            } 
-            return throwError(()=> new Error())  
+                    errorMessage = `other error Status ${error.status}, Error: ${detalhe}`;
+            }
+
+            console.log(errorMessage);
+            return throwError(()=> new Error(errorMessage, { cause: error }))
         })
     )
-    
+
 }

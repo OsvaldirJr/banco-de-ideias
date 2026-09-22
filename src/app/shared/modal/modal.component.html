@@ -1,0 +1,10 @@
+<dialog #dialog class="modal" (click)="cliqueNoFundo($event)" (close)="fechado.emit()">
+  <div class="modal-conteudo">
+    <header class="modal-topo">
+      <h2 class="modal-titulo">{{titulo()}}</h2>
+      <button type="button" class="modal-fechar" (click)="fechar()" aria-label="Fechar">&times;</button>
+    </header>
+
+    <ng-content />
+  </div>
+</dialog>

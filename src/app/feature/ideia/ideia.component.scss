@@ -1,0 +1,201 @@
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.voltar {
+  font-weight: 600;
+  color: #5b4bc4;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+.acoes {
+  display: flex;
+  gap: 12px;
+}
+
+.titulo {
+  margin: 0 0 24px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c2c3a;
+}
+
+.itens {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(80, 70, 140, 0.08);
+}
+
+.item-rotulo {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8b88a3;
+}
+
+.item-valor {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #2c2c3a;
+  overflow-wrap: break-word;
+}
+
+.votacao {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(80, 70, 140, 0.08);
+}
+
+.votacao-total {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-right: auto;
+}
+
+.votacao-numero {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2c2c3a;
+}
+
+.votacao-rotulo {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8b88a3;
+}
+
+.votacao-aviso {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #7a7a8c;
+}
+
+.votacao .erro {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.votar {
+  padding: 10px 22px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: #6c5ce7;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.votar:hover:not(:disabled) {
+  background: #5b4bc4;
+}
+
+// Ja votei: o botao vira "desfazer", entao perde o preenchimento forte.
+.votar.votado {
+  border-color: #d8d5e8;
+  color: #5b4bc4;
+  background: #f3f1fd;
+}
+
+.votar.votado:hover:not(:disabled) {
+  border-color: #b9b4d4;
+  background: #eae7fb;
+}
+
+.votar:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.editar,
+.excluir,
+.cancelar {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.editar {
+  color: #fff;
+  background: #6c5ce7;
+}
+
+.editar:hover {
+  background: #5b4bc4;
+}
+
+.excluir {
+  color: #fff;
+  background: #c0392b;
+}
+
+.excluir:hover {
+  background: #a5301f;
+}
+
+.cancelar {
+  border: 1px solid #d8d5e8;
+  color: #5a5a6e;
+  background: #faf9fd;
+}
+
+.cancelar:hover {
+  border-color: #b9b4d4;
+}
+
+.confirmacao {
+  margin: 0 0 24px;
+  font-size: 1rem;
+  color: #3d3d4d;
+}
+
+.confirmacao-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.erro {
+  color: #c0392b;
+}
+
+.vazio {
+  color: #7a7a8c;
+}

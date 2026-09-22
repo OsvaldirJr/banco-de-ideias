@@ -1,12 +1,11 @@
 .card {
-  width: 280px;
-  min-height: 180px;
-  margin: 12px;
+  height: 280px;
   overflow: hidden;
   border-radius: 16px;
   background-color: #fff;
   box-shadow: 0 8px 20px rgba(80, 70, 140, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -21,25 +20,61 @@
   padding: 20px;
 }
 
+.card-categoria {
+  align-self: center;
+  flex: none;
+  max-width: 100%;
+  margin-bottom: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5b4bc4;
+  background-color: #efecfd;
+  // categoria longa nao pode quebrar a pill em duas linhas
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .card-title {
   margin: 0 0 8px;
   font-size: 1.15rem;
   font-weight: 600;
+  line-height: 1.35;
   text-align: center;
   color: #2c2c3a;
+  overflow-wrap: break-word;
+  // corta em 2 linhas e coloca as reticencias
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 .card-description {
   flex: 1;
+  min-height: 0;
   margin: 0 0 16px;
   font-size: 0.92rem;
   line-height: 1.55;
   text-align: center;
   color: #6b6b7c;
+  overflow-wrap: break-word;
+  // mesma ideia do titulo, com mais folga
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .card-footer {
   display: flex;
+  flex: none;
   justify-content: center;
 }
 

@@ -23,6 +23,20 @@ export class IdeiaService {
   getIdeiaById(id: number): Observable<IdeiaInterface>{
     return this._httpClient.get<IdeiaInterface>(`${environment.apiUrl}/ideias/${id}`)
   }
+
+  updateIdeia(id: number, ideia: IdeiaInterface): Observable<IdeiaInterface>{
+    return this._httpClient.put<IdeiaInterface>(`${environment.apiUrl}/ideias/${id}`, ideia)
+  }
+
+  deleteIdeia(id: number): Observable<void>{
+    return this._httpClient.delete<void>(`${environment.apiUrl}/ideias/${id}`)
+  }
+
+  // Liga/desliga o voto: a API olha se este usuario ja votou e decide somar ou
+  // subtrair. Nao mandamos corpo — quem esta votando vem do token.
+  votar(id: number): Observable<IdeiaInterface>{
+    return this._httpClient.patch<IdeiaInterface>(`${environment.apiUrl}/ideias/${id}/votar`, {})
+  }
   getIdeiaByName(name: string): Observable<IdeiaInterface>{
     return this._httpClient.get<IdeiaInterface>(`${environment.apiUrl}/ideias/${name}`)
   }

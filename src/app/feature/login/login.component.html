@@ -6,7 +6,6 @@
             @if (userValue?.invalid && userValue.touched) {
             <span class='erro'>O texto é obrigatório</span>
             }
-
         </div>
 
         <div class="campo">
@@ -20,5 +19,7 @@
         <button (click)="login()" [disabled]='loginForm.invalid'>
             Enviar
         </button>
+
+        <p class="alternativa">Não tem conta? <a routerLink="/cadastro-usuario">Cadastre-se aqui</a></p>
     </form>
 </section>

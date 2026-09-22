@@ -1,0 +1,29 @@
+<section class="pagina">
+
+    <header class="topo">
+      <h1 class="titulo">Banco de ideias</h1>
+      <div>
+        {{sessao.user?.email}}
+        <a class="voltar" (click)="logout()"> Sair</a>
+      </div>
+    </header>
+
+    <app-modal #modalCadastro titulo="Nova ideia">
+      <app-cadastro (salvo)="aoSalvar(modalCadastro)" />
+    </app-modal>
+
+    <app-filtro [categorias]="categorias()" (filtrar)="filtro.set($event)" />
+     <button type="button" class="nova-ideia" (click)="modalCadastro.abrir()">
+        Nova ideia
+      </button>
+
+    @if (listaDeIdeias.isLoading()) {
+      <p>Carregando ideias...</p>
+    } @else if (erro()) {
+      <p class="erro">Não foi possível carregar as ideias: {{ erro() }}</p>
+    } @else {
+      <app-lista-ideia [filteredIdeias]="filteredIdeias()" />
+    }
+
+    <span class="counter">A quantidade de Cards é {{counter()}} de {{total()}}</span>
+</section>
