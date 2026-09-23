@@ -60,7 +60,12 @@ export class IdeiaComponent {
       { rotulo: 'Criada em', valor: ideia.criadoEm ? new Date(ideia.criadoEm).toLocaleString('pt-BR') : '-' },
     ]
   });
-
+  private route =  inject(ActivatedRoute)
+  constructor(){
+    this.route.data.subscribe(x=>{
+      console.log(x)
+    })
+  }
   public votar(): void {
     const id = this.ideia()?.id;
     if (!id || this.votando() || !this.podeVotar()) {

@@ -4,11 +4,15 @@ import { IdeiaComponent } from './feature/ideia/ideia.component';
 import { LoginComponent } from './feature/login/login.component';
 import { CadastroUsuarioComponent } from './feature/cadastro-usuario/cadastro-usuario.component';
 import { HomeComponent } from './feature/home/home.component';
+import { authGuard } from './core/guards/auth.guard';
+import { unsavedItemsGuard } from './core/guards/unsaved-items-guard.guard';
+import { IdeiaResolver } from './core/resolvers/ideia.resolver';
 
 export const routes: Routes = [
     {
         path:'',
-        component:HomeComponent
+        component:HomeComponent, 
+        canActivate:[authGuard]
     },
     {
         path:'login',
@@ -16,7 +20,8 @@ export const routes: Routes = [
     },
     {
         path:'cadastro-usuario',
-        component:CadastroUsuarioComponent
+        component:CadastroUsuarioComponent,
+        canDeactivate:[unsavedItemsGuard]
     },
     {
         path:'ideia',
@@ -25,5 +30,6 @@ export const routes: Routes = [
     {
         path:'ideia/:id',
         component:IdeiaComponent,
+        resolve: {ideia: IdeiaResolver}
     }
 ];

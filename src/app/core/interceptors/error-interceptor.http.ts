@@ -13,7 +13,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) =>{
 
             switch(error.status){
                 case 401:
-                    router.navigate(['/login']);
+                    // router.navigate(['/login']);
                     errorMessage = `Unauthorized error: ${detalhe}`;
                     break;
                 case 404:

@@ -43,6 +43,9 @@ export class CadastroUsuarioComponent {
       }
     });
   }
+  public podeDesativar(){
+    return !this.cadastroForm.dirty
+  }
 }
 
 function mensagemDoErro(erro: Error): string {
