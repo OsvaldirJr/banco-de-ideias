@@ -1,15 +1,15 @@
-<div class="card" [routerLink]="['/ideia', this.ideia().id]">
-    <div class="card-content">
+<div class="card" [routerLink]="['/ideia', this.ideia().id]" >
+    <div class="card-content" >
         @if (ideia().categoria) {
-            <span class="card-categoria">{{ideia().categoria}}</span>
+            <span class="card-categoria" highlight>{{ideia().categoria | uppercase}}</span>
         }
-        <h3 class="card-title">{{ideia().ideia}}</h3>
+        <h3 class="card-title">{{ideia().ideia | textoGenerico : 'alguma coisa é: ' }}</h3>
         <p class="card-description">
             {{ideia().resolve}}
         </p>
 
         <div class="card-footer">
-            <button class="card-button" >Saiba mais</button>
+            <button class="card-button" userView>Saiba mais</button>
         </div>
     </div>
 </div>
