@@ -17,13 +17,27 @@
         Nova ideia
       </button>
 
-    @if (listaDeIdeias.isLoading()) {
+    <!-- @if (listaDeIdeias.isLoading()) {
       <p>Carregando ideias...</p>
     } @else if (erro()) {
       <p class="erro">Não foi possível carregar as ideias: {{ erro() }}</p>
     } @else {
       <app-lista-ideia [filteredIdeias]="filteredIdeias()" />
+    } -->
+    <button #abre>Abrir</button>
+    @defer (on idle(500); prefetch on idle){
+      <app-lista-ideia [filteredIdeias]="filteredIdeias()" />
     }
+    @placeholder {
+      <p>Carregando ideias...</p>
+    }
+    @error{
+      <p>Deu erro ao carregar...</p>
+    }
+    @loading(after 100ms; minimum 1s) {
+      <p>Carregando ideias...</p>
+    }
+    
 
     <span class="counter">A quantidade de Cards é {{counter()}} de {{total()}}</span>
 </section>

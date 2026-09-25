@@ -10,7 +10,6 @@ import { TextoGenericoPipe } from '../../core/pipes/texto-generico.pipe';
   imports:[RouterModule, UpperCasePipe, HighlightDirective, TextoGenericoPipe],
   standalone: true,
   templateUrl: './card.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
